@@ -16,8 +16,7 @@
 
 <style scoped lang="scss">
 .mb-welcome {
-  background: url('https://tailwindcss.com/_next/static/media/hero-dark@90.a7a063e8f9d179fbd72b0b735c5797b7.jpg');
-  //background-color: #f3f5f6;
+  background-color: #0c1120;
   color: #293017;
   height: 100vh;
   width: 100vw;
