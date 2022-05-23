@@ -9,15 +9,17 @@
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^5.0.4",
     "autoprefixer": "^10.4.7",
-    "dart-sass": "^1.25.0",
     "nuxt": "3.0.0-rc.3",
+    "nuxt-sass-resources-loader": "^2.0.5",
     "postcss": "^8.4.14",
-    "sass": "^1.51.0",
-    "sass-loader": "^13.0.0",
-    "scss-loader": "^0.0.1",
+    "postcss-pxtorem": "^6.0.0",
+    "px2rem-loader": "^0.1.9",
     "tailwindcss": "^3.0.24"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "amfe-flexible": "^2.2.1",
+    "normalize.css": "^8.0.1",
+    "postcss-import": "^14.1.0",
+    "postcss-px2rem": "^0.3.0"
   }
 }

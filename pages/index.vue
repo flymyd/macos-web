@@ -1,12 +1,8 @@
 <template>
   <div class="mb-welcome antialiased flex flex-row justify-center items-center font-bold">
-    <div
-      style="background: -webkit-linear-gradient(315deg,#42d392 25%,#647eff);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">
-       <span style="font-size: 60px;-webkit-text-fill-color:transparent;">
-        Hey ya
-        </span>
+    <div class="mb-welcome-title-box">
+      <span>Hey ya</span>
     </div>
-
   </div>
 </template>
 
@@ -21,4 +17,17 @@
   height: 100vh;
   width: 100vw;
 }
+
+.mb-welcome-title-box {
+  width: 200px;
+  background: -webkit-linear-gradient(315deg, #42d392 25%, #647eff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  span {
+    font-size: 60px;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
 </style>
