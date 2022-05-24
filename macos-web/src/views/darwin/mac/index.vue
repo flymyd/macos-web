@@ -2,15 +2,17 @@
   <div class="mac-container antialiased">
       <div class="mac-desktop">
         <status-bar :bar-items="barItems"></status-bar>
+        <Dock></Dock>
       </div>
   </div>
 </template>
 
 <script>
 import StatusBar from "@/components/darwin/mac/StatusBar.vue";
+import Dock from "@/components/darwin/mac/Dock.vue";
 export default {
   name: "index",
-  components: {StatusBar},
+  components: {StatusBar,Dock},
   data:()=>({
     barItems: [
       {name: '访达'},

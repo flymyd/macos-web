@@ -32,6 +32,11 @@
   </div>
 </template>
 <script>
+const fixZero = (num) => {
+  if (parseInt(num) < 10) {
+    return '0' + num;
+  } else return num;
+}
 export default {
   name: "statusBar",
   props: {
@@ -71,7 +76,7 @@ export default {
         const date = new Date();
         let month = date.getMonth() + 1;
         let day = "周" + "日一二三四五六".charAt(date.getDay());
-        this.nowClock = `${month}月${date.getDate()}日 ${day} ${date.getHours()}:${date.getMinutes()}`
+        this.nowClock = `${month}月${date.getDate()}日 ${day} ${fixZero(date.getHours())}:${fixZero(date.getMinutes())}`
         this.refreshClock()
       })
     }
