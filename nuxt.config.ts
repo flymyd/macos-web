@@ -8,7 +8,6 @@ export default defineNuxtConfig({
   css: [
     'normalize.css/normalize.css',
     'assets/css/tailwind.css',
-    '@/assets/css/main.css'
   ],
   build: {
     postcss: {

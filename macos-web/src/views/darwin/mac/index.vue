@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import StatusBar from "../../../components/darwin/mac/StatusBar";
+import StatusBar from "@/components/darwin/mac/StatusBar.vue";
 export default {
   name: "index",
   components: {StatusBar},
