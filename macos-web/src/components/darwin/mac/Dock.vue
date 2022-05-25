@@ -2,9 +2,10 @@
   <div class="mac-dock-container flex flex-row justify-center">
     <div class="mac-dock flex flex-row justify-center items-center">
       <div class="mac-dock-item-container flex flex-col items-center"
-           :style="{animationPlayState: i===clickItem?'running':'paused'}"
+           :style="{animationPlayState: i===leftClickItem?'running':'paused'}"
            v-for="(item,i) in dockItems"
-           @mouseover="onHoverDock(i)" @mouseout="onHoverDock(-1)" @click="clickDock(i)">
+           @mouseover="onHoverDock(i)" @mouseout="onHoverDock(-1)"
+           @click="onLeftClick(i)" @contextmenu="onRightClick(i)">
         <div class="mac-dock-bubble" v-if="i===hoverItem">{{ item.name }}</div>
         <img :src="item.icon">
         <span v-if="item.isOpen===true">•</span>
@@ -18,7 +19,7 @@ export default {
   name: "Dock",
   data: () => ({
     hoverItem: -1,
-    clickItem: -1,
+    leftClickItem: -1,
     dockItems: [
       {name: '访达', icon: '../../src/assets/img/finder.png', action: ''},
       {name: 'App Store', icon: '../../src/assets/img/appstore.png', action: ''},
@@ -30,10 +31,15 @@ export default {
     onHoverDock(i) {
       this.hoverItem = i;
     },
-    clickDock(i) {
-      this.clickItem = i;
+    onLeftClick(i) {
+      this.leftClickItem = i;
       this.dockItems[i].isOpen = true;
+    },
+    onRightClick(i){
+      console.log(i)
     }
+  },
+  mounted() {
   }
 }
 </script>
