@@ -2,10 +2,9 @@
   cursor: default;
   user-select: none;
   font-size: 14px;
-  height: 100%;
   color: #eee;
   font-weight: 500;
-
+  width: 100%;
   .mac-status-bar {
     z-index: 9998;
     height: 26px;
@@ -35,6 +34,7 @@
   $menu-item-padding: 2px;
 
   .mac-status-bar-menu {
+    width: fit-content;
     z-index: 9999;
     background: rgba(60, 60, 60, 0.85);
     margin-left: 5px;
@@ -46,17 +46,17 @@
     border-radius: 5px;
     border: solid 1px rgba(153, 153, 153, 0.7);
     border-top: none;
-    max-width: 150px;
-
     .mac-status-bar-menu-divider {
       margin-top: 2*$menu-item-padding;
       border-bottom: solid 1px rgba(102, 102, 102, 0.5);
       width: 100%;
     }
 
-    .mac-status-bar-menu-has-sub {
+    .mac-status-bar-menu-has-sub:after {
       font-weight: 600;
       margin-right: 5px;
+      margin-left: 15px;
+      content: ">";
     }
 
     .mac-status-bar-menu-item {
@@ -64,6 +64,8 @@
       padding-left: 3*$menu-item-padding;
       padding-right: 3*$menu-item-padding;
       border-radius: 3px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 
     .mac-status-bar-menu-item:hover {
