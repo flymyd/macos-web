@@ -9,7 +9,7 @@
 <script>
 import StatusBar from "@/components/darwin/mac/StatusBar.vue";
 import Dock from "@/components/darwin/mac/Dock.vue";
-import DesktopContainer from "../../../components/darwin/mac/DesktopContainer.vue";
+import DesktopContainer from "../../../components/darwin/mac/WindowServer.vue";
 
 export default {
   name: "index",

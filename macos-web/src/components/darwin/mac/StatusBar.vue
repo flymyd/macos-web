@@ -49,11 +49,11 @@ const onClickBarItem = (index: number) => {
   } else {
     clickItemIndex.value = index;
   }
-  useStore().$patch({clickStatusBarItemIndex: clickItemIndex.value})
+  useStore().changeStatusBarItemIndex(clickItemIndex.value)
 };
 const onHoverBarItem = (index: number) => {
   clickItemIndex.value = index;
-  useStore().$patch({clickStatusBarItemIndex: clickItemIndex.value})
+  useStore().changeStatusBarItemIndex(clickItemIndex.value)
 };
 const getMenuOffsetX = computed(() => {
   let refDom;

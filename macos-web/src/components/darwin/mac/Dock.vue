@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import {AppDescriber} from "../../../factory/AppStore";
+
 export default {
   name: "Dock",
   data: () => ({

@@ -1,9 +1,35 @@
 import {defineStore} from 'pinia'
+import {appDescriber, appInstance} from "@/declare/WindowServer";
 
-export const useStore = defineStore('darwin-macos',{
+export const useStore = defineStore('darwin-macos', {
   state: () => ({
     clickStatusBarItemIndex: -2,  //状态栏当前点击的按钮索引，-2为空，-1为Apple Logo，其它自定义
   }),
   getters: {},
-  actions: {},
+  actions: {
+    changeStatusBarItemIndex(index: number) {
+      this.clickStatusBarItemIndex = index;
+    },
+  },
+})
+
+export const useAppStore = defineStore('WindowServer',{
+  state: () => ({
+    appDescribers: {} as any,  //App实例描述
+  }),
+  getters: {},
+  actions: {
+    // 新建一个App实例
+    newApplication(appDescriber: appDescriber) {
+      this.appDescribers[appDescriber.appName] = appDescriber;
+    },
+    // 移除一个App实例
+    removeApplication(appDescriber: appDescriber) {
+      delete this.appDescribers[appDescriber.appName]
+    },
+    // 修改App的状态
+    changeApplication(appName: string, props: string, value: any) {
+      this.appDescribers[appName][props] = value;
+    }
+  },
 })
