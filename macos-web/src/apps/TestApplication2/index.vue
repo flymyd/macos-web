@@ -14,6 +14,6 @@ export default {
 .test2 {
   width: 200px;
   height: 200px;
-  background: red;
+  color: white;
 }
 </style>

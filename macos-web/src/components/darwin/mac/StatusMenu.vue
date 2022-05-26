@@ -42,10 +42,9 @@ const doAction = (item: MenuItem) => {
   const app1 = new AppDescriber('TestApplication1', '测试应用1')
   const app2 = new AppDescriber('TestApplication2', '测试应用2', '测试标题2')
   if (item.action == 114) {
-    appStore.newApplication(app2);
+    appStore.newApplication(app1);
   } else if (item.action == 514) {
-    // store.newApplication(app2)
-    appStore.changeApplication('TestApplication1','titleName','114514')
+    appStore.newApplication(app2)
   } else {
     appStore.removeApplication(app2)
   }
