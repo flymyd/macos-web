@@ -1,8 +1,14 @@
 <template>
   <div class="mac-desktop-container">
     <keep-alive>
-      <component v-for="item in appInstances" :is="item.componentInstance"></component>
+      <WindowFrameWork v-for="item in appInstances">
+        <template v-slot:header>114</template>
+        <template v-slot:main>
+          <component :is="item.componentInstance"></component>
+        </template>
+      </WindowFrameWork>
     </keep-alive>
+
   </div>
 </template>
 
@@ -12,6 +18,7 @@ import {defineAsyncComponent, isReactive, markRaw, reactive, ref, toRaw} from "v
 import {appDescriber, appInstance} from "@/declare/WindowServer";
 import {storeToRefs} from "pinia";
 import {useAppStore} from "@/store";
+import WindowFrameWork from "@/components/darwin/mac/WindowFrameWork.vue";
 
 //监听pinia中的appDescribers以实现对app实例的操作。app实例均会挂载在此组件(WindowServer)下
 const appStore = useAppStore();
