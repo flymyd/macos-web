@@ -33,7 +33,7 @@ const createInstance = (appDescriber: appDescriber) => {
     name: appDescriber.name,
     appName: appDescriber.appName,
     componentInstance: markRaw(defineAsyncComponent(() =>
-      import(/* @vite-ignore */`/src/apps/${appDescriber.appName}/index.vue`)
+        import(/* @vite-ignore */`/src/apps/${appDescriber.appName}/index.vue`)
     ))
   } as appInstance;
 }
@@ -45,7 +45,15 @@ const removeInstance = (appName: string) => {
   delete appInstances[appName]
 }
 const setInstance = (appName: string, props: string, value: any) => {
-  appInstances[appName][props] = value;
+  console.log(appName)
+  console.log(appInstances[appName])
+  if (typeof appInstances[appName][props] !== "undefined") {
+    if (appInstances[appName][props] == value) {
+      return false;
+    } else {
+      appInstances[appName][props] = value;
+    }
+  } else appInstances[appName][props] = value;
 }
 /**
  * pinia中app实例组修改的状态监听
@@ -55,7 +63,6 @@ const appSubscribe = appStore.$subscribe((mutation, state) => {
   const {newValue, target, type, key} = events;
   console.log(events)
   if (target) {
-    console.log(true)
     if (type == 'add') {
       createInstance(appStore.appDescribers[key])
     } else if (type == 'delete') {

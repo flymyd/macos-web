@@ -21,11 +21,14 @@ export const useAppStore = defineStore('WindowServer',{
   actions: {
     // 新建一个App实例
     newApplication(appDescriber: appDescriber) {
+      if (Object.keys(this.appDescribers).includes(appDescriber.appName)) return false;
       this.appDescribers[appDescriber.appName] = appDescriber;
+      useStore().clickStatusBarItemIndex = -2;
     },
     // 移除一个App实例
     removeApplication(appDescriber: appDescriber) {
-      delete this.appDescribers[appDescriber.appName]
+      delete this.appDescribers[appDescriber.appName];
+      useStore().clickStatusBarItemIndex = -2;
     },
     // 修改App的状态
     changeApplication(appName: string, props: string, value: any) {

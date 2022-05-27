@@ -44,7 +44,8 @@ const doAction = (item: MenuItem) => {
   if (item.action == 114) {
     appStore.newApplication(app1);
   } else if (item.action == 514) {
-    appStore.newApplication(app2)
+    // appStore.newApplication(app2)
+    appStore.changeApplication("TestApplication1","name","田所")
   } else {
     appStore.removeApplication(app2)
   }
