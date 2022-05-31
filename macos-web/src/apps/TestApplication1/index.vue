@@ -1,12 +1,17 @@
 <template>
   <div class="test1">
-    114514114514
+    <span style="background-color: blue" @click="test">1145141919</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TestApplication1"
+  name: "TestApplication1",
+  methods:{
+    test(){
+      console.log(114)
+    }
+  }
 }
 </script>
 

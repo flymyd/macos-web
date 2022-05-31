@@ -1,37 +1,31 @@
 <template>
   <Vue3DraggableResizable
-    :initW="110"
-    :initH="110"
-    v-model:x="xCoor"
-    v-model:y="yCoor"
-    v-model:w="dragWidth"
-    v-model:h="dragHeight"
+    :initW="110" :initH="110"
+    v-model:x="xCoor" v-model:y="yCoor"
+    v-model:w="dragWidth" v-model:h="dragHeight"
     v-model:active="active"
-    :draggable="true"
-    :resizable="true"
+    :draggable="true" :resizable="true"
     @activated="print('activated')"
     @deactivated="print('deactivated')"
-    @drag-start="print('drag-start')"
-    @dragging="print('dragging')"
     @resizing="onResizing"
-    @drag-end="print('drag-end')"
   >
     <div class="mac-window-frame" :ref="appInstances.appName+'Ref'">
       <div class="mac-window-frame-bar">
         <div class="mac-window-frame-btn-group">
-          <button class="mac-window-frame-btn-close">
+          <button class="mac-window-frame-btn-close" @mousedown.stop="clickBar(0)">
             <span>x</span>
           </button>
-          <button class="mac-window-frame-btn-min">
+          <button class="mac-window-frame-btn-min" @mousedown.stop="clickBar(1)">
             <span>-</span>
           </button>
-          <button class="mac-window-frame-btn-max">
+          <button class="mac-window-frame-btn-max" @mousedown.stop="clickBar(2)">
             <span>+</span>
           </button>
         </div>
         <slot name="header"></slot>
       </div>
-      <div class="mac-window-frame-container">
+      <!--TODO 此处事件也应处理vuex中的active-->
+      <div class="mac-window-frame-container" @mousedown.stop="">
         <component :is="appInstances.componentInstance"
                    :style="windowSizeHandle"
         ></component>
@@ -58,7 +52,7 @@ const dragWidth = ref(100);
 const dragHeight = ref(100);
 const windowWidth = ref(0);
 const windowHeight = ref(0);
-const active = ref(false)
+const active = ref(true) //TODO 进入vuex
 watchEffect(() => {
   nextTick(() => {
     setTimeout(() => {
@@ -86,7 +80,10 @@ const onResizing = () => {
   windowHeight.value = dragHeight.value;
 }
 const print = (val: any) => {
-  // console.log(windowWidth.value, windowHeight.value)
+  console.log(val)
+}
+const clickBar = (action: number) => {
+  console.log(action)
 }
 
 </script>
@@ -94,6 +91,54 @@ const print = (val: any) => {
 <style scoped lang="scss">
 .vdr-container.active {
   border: none !important;
+}
+
+::v-deep(.vdr-handle) {
+  background: transparent;
+  border: none;
+}
+
+//上半部分缩放点
+::v-deep(.handle-tl) {
+  width: 4%;
+  top: 0;
+}
+
+::v-deep(.handle-tm) {
+  width: 94%;
+  left: 4%;
+}
+
+::v-deep(.handle-tr) {
+  width: 4%;
+  top: 0;
+}
+
+//下半部分缩放点
+::v-deep(.handle-bl) {
+  width: 4%;
+  bottom: 0;
+}
+
+::v-deep(.handle-bm) {
+  width: 94%;
+  left: 4%;
+}
+
+::v-deep(.handle-br) {
+  width: 4%;
+  bottom: 0;
+}
+
+//左右缩放点
+::v-deep(.handle-ml) {
+  height: 96%;
+  top: 3%;
+}
+
+::v-deep(.handle-mr) {
+  height: 96%;
+  top: 3%;
 }
 
 .mac-window-frame {
