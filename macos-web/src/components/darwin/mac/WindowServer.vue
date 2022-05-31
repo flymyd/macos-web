@@ -1,14 +1,10 @@
 <template>
   <div class="mac-desktop-container">
     <keep-alive>
-      <WindowFrameWork v-for="item in appInstances">
-        <template v-slot:header>114</template>
-        <template v-slot:main>
-          <component :is="item.componentInstance"></component>
-        </template>
+      <WindowFrameWork v-for="item in appInstances" :app-instances="item">
+        <template v-slot:header>{{item.name}}</template>
       </WindowFrameWork>
     </keep-alive>
-
   </div>
 </template>
 
@@ -33,7 +29,7 @@ const createInstance = (appDescriber: appDescriber) => {
     name: appDescriber.name,
     appName: appDescriber.appName,
     componentInstance: markRaw(defineAsyncComponent(() =>
-        import(/* @vite-ignore */`/src/apps/${appDescriber.appName}/index.vue`)
+      import(/* @vite-ignore */`/src/apps/${appDescriber.appName}/index.vue`)
     ))
   } as appInstance;
 }

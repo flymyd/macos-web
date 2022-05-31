@@ -15,5 +15,6 @@ export default {
   width: 200px;
   height: 200px;
   color: white;
+  background-color: purple;
 }
 </style>
