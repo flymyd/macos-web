@@ -1,11 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/*@font-face {*/
+/*    font-family: 'PingFang SC';*/
+/*    src: url('src/assets/css/PingFangSC.ttf');*/
+/*    font-weight: normal;*/
+/*    font-style: normal;*/
+/*}*/
 @font-face {
-    font-family: 'PingFang SC';
-    src: url('src/assets/css/PingFangSC.ttf');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'SF Pro SC';
+  src: url('src/assets/css/SFPro.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
 #app {
     cursor: default;
