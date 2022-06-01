@@ -12,8 +12,8 @@ export default {
 
 <style scoped lang="scss">
 .test2 {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   color: white;
 }
 </style>
