@@ -2,15 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-    font-family: 'PingFang SC';
-    src: url('src/assets/css/PingFangSC.ttf');
-    font-weight: normal;
+    font-family: 'SF Pro SC';
     font-style: normal;
+    font-weight: 300;
+    src: local('☺'), url("./PingFangSC-Light.woff") format("woff");
+    /* (C) 2015 Apple Inc. All rights reserved. */
 }
+
+@font-face {
+    font-family: 'SF Pro SC';
+    font-style: normal;
+    font-weight: 500;
+    src: local('☺'), url("./PingFangSC-Medium.woff2") format("woff2");
+    /* (C) 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+    font-family: 'SF Pro SC';
+    font-style: normal;
+    font-weight: 600;
+    src: local('☺'), url("./PingFangSC-Semibold.woff2") format("woff2");
+    /* (C) 2015 Apple Inc. All rights reserved. */
+}
+
+@font-face {
+    font-family: 'SF Pro SC';
+    font-style: normal;
+    font-weight: 400;
+    src: local('☺'), url("./PingFangSC-Regular.woff") format("woff");
+    /* (C) 2015 Apple Inc. All rights reserved. */
+}
+
 #app {
     cursor: default;
     user-select: none;
-    font-family: "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: "SF Pro SC", "Microsoft YaHei", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-weight: 400;
     font-style: normal;
 }
