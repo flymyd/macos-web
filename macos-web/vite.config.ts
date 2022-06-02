@@ -1,17 +1,21 @@
 import {defineConfig} from 'vite'
 import vue from '@vitejs/plugin-vue'
 import PurgeIcons from 'vite-plugin-purge-icons';
+
 const path = require('path');
 // https://vitejs.dev/config/
 export default defineConfig({
-  resolve:{
-    alias:{
-      '@': path.resolve(__dirname,"src")
+  server: {
+    host: '0.0.0.0',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, "src")
     }
   },
-  css:{
-    postcss:{
-      plugins:[
+  css: {
+    postcss: {
+      plugins: [
         require('autoprefixer'),
         require('tailwindcss'),
         // require('postcss-px-to-viewport')({

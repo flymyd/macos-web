@@ -30,8 +30,11 @@ const props = defineProps({
     required: true
   },
   menuOffset: {
-    type: Object as PropType<MenuOffsetStyle>,
-    default: {}
+    // type: Object as PropType<MenuOffsetStyle>,
+    type: Object,
+    default: {
+      marginTop: 0
+    }
   }
 })
 const store = useStore();
@@ -44,8 +47,8 @@ const doAction = (item: MenuItem) => {
   if (item.action == 114) {
     appStore.newApplication(app1);
   } else if (item.action == 514) {
-    // appStore.newApplication(app2)
-    appStore.changeApplication("TestApplication1","name","田所")
+    appStore.newApplication(app2)
+    // appStore.changeApplication("TestApplication1","name","田所")
   } else {
     appStore.removeApplication(app2)
   }
