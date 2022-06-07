@@ -24,10 +24,10 @@ export default {
     hoverItem: -1,
     leftClickItem: -1,
     dockItems: [
-      {name: '访达', icon: '../../src/assets/img/finder.png', action: ''},
-      {name: 'App Store', icon: '../../src/assets/img/appstore.png', action: ''},
-      {name: 'iMessage信息', icon: '../../src/assets/img/message.png', action: ''},
-      {name: 'Siri', icon: '../../src/assets/img/siri-big.png', action: ''},
+      {name: '访达', icon: '/img/finder.png', action: ''},
+      {name: 'App Store', icon: '/img/appstore.png', action: ''},
+      {name: 'iMessage信息', icon: '/img/message.png', action: ''},
+      {name: 'Siri', icon: '/img/siri-big.png', action: ''},
     ]
   }),
   methods: {

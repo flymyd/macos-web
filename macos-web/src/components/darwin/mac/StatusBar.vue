@@ -18,8 +18,8 @@
       </div>
       <div class="flex flex-row-reverse items-center">
         <div class="mac-status-bar-item">{{ nowClock }}</div>
-        <img src="@/assets/img/siri-small.png"/>
-        <img src="@/assets/img/wlan.png"/>
+        <img src="/img/siri-small.png"/>
+        <img src="/img/wlan.png"/>
       </div>
     </div>
     <StatusMenu :menu-items="menuItems" :menu-offset="getMenuOffsetX"></StatusMenu>
