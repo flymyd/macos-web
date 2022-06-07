@@ -1,5 +1,5 @@
-import {defineStore} from 'pinia'
-import {appDescriber, appInstance} from "@/declare/WindowServer";
+import { defineStore } from 'pinia'
+import { appDescriber, appInstance } from "@/declare/WindowServer";
 
 export const useStore = defineStore('darwin-macos', {
   state: () => ({
@@ -13,7 +13,7 @@ export const useStore = defineStore('darwin-macos', {
   },
 })
 
-export const useAppStore = defineStore('WindowServer',{
+export const useAppStore = defineStore('WindowServer', {
   state: () => ({
     appDescribers: {} as any,  //App实例描述
   }),
@@ -25,14 +25,14 @@ export const useAppStore = defineStore('WindowServer',{
       this.appDescribers[appDescriber.appName] = appDescriber;
       useStore().clickStatusBarItemIndex = -2;
     },
+    // 修改App的状态
+    changeApplication(appName: string, props: string, value: any) {
+      this.appDescribers[appName][props] = value;
+    },
     // 移除一个App实例
     removeApplication(appDescriber: appDescriber) {
       delete this.appDescribers[appDescriber.appName];
       useStore().clickStatusBarItemIndex = -2;
     },
-    // 修改App的状态
-    changeApplication(appName: string, props: string, value: any) {
-      this.appDescribers[appName][props] = value;
-    }
   },
 })

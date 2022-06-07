@@ -1,8 +1,10 @@
 <template>
   <div class="mac-desktop-container">
     <keep-alive>
-      <WindowFrameWork v-for="item in appInstances" :app-instances="item">
-        <template v-slot:header>{{item.name}}</template>
+      <WindowFrameWork v-for="item in appInstances" :app-instances="item" :key="item.name">
+        <template v-slot:header v-if="item.name">
+          <span class="mac-desktop-app-title">{{ item.name }}</span>
+        </template>
       </WindowFrameWork>
     </keep-alive>
   </div>
@@ -10,15 +12,15 @@
 
 <script setup lang="ts">
 
-import {defineAsyncComponent, isReactive, markRaw, reactive, ref, toRaw} from "vue";
-import {appDescriber, appInstance} from "@/declare/WindowServer";
-import {storeToRefs} from "pinia";
-import {useAppStore} from "@/store";
+import { defineAsyncComponent, markRaw, reactive } from "vue";
+import { appDescriber, appInstance } from "@/declare/WindowServer";
+import { storeToRefs } from "pinia";
+import { useAppStore } from "@/store";
 import WindowFrameWork from "@/components/darwin/mac/WindowFrameWork.vue";
 
 //监听pinia中的appDescribers以实现对app实例的操作。app实例均会挂载在此组件(WindowServer)下
 const appStore = useAppStore();
-const {appDescribers} = storeToRefs(appStore);
+const { appDescribers } = storeToRefs(appStore);
 let appInstances = reactive({} as any);  //app实例组
 /**
  * 在WindowServer中创建app实例
@@ -29,7 +31,7 @@ const createInstance = (appDescriber: appDescriber) => {
     name: appDescriber.name,
     appName: appDescriber.appName,
     componentInstance: markRaw(defineAsyncComponent(() =>
-      import(/* @vite-ignore */`/src/apps/${appDescriber.appName}/index.vue`)
+      import(/* @vite-ignore */`../../../apps/${appDescriber.appName}/index.vue`)
     ))
   } as appInstance;
 }
@@ -54,20 +56,33 @@ const setInstance = (appName: string, props: string, value: any) => {
 /**
  * pinia中app实例组修改的状态监听
  */
-const appSubscribe = appStore.$subscribe((mutation, state) => {
-  const events = mutation.events as any;
-  const {newValue, target, type, key} = events;
-  console.log(events)
-  if (target) {
-    if (type == 'add') {
-      createInstance(appStore.appDescribers[key])
-    } else if (type == 'delete') {
-      removeInstance(key)
-    } else if (type == 'set') {
-      setInstance(target.appName, key, newValue)
+const appSubscribe = appStore.$onAction(
+  ({
+    name,
+    store,
+    args,
+  }) => {
+    switch (name) {
+      case 'newApplication':
+        if (args.length === 1) {
+          createInstance(args[0] as appDescriber)
+        }
+        break;
+      case 'changeApplication':
+        if (args.length === 3) {
+          setInstance(args[0], args[1], args[2])
+        }
+        break;
+      case 'removeApplication':
+        if (args.length === 1) {
+          const toDelete = args[0] as appDescriber;
+          removeInstance(toDelete.appName);
+        }
+        break;
     }
   }
-}, {detached: false})
+)
+
 </script>
 
 <style scoped lang="scss">
@@ -79,5 +94,11 @@ button {
 .mac-desktop-container {
   background: transparent;
   height: 100%;
+}
+
+.mac-desktop-app-title {
+  color: white;
+  overflow: hidden;
+  white-space: nowrap;
 }
 </style>
