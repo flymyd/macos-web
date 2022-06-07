@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "debug-preview": "vue-tsc --noEmit && vite build && vite preview"
   },
   "dependencies": {
     "@iconify/iconify": "^2.2.1",

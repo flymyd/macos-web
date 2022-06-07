@@ -4,6 +4,7 @@
       <div class="mac-dock-item-container flex flex-col items-center"
            :style="{animationPlayState: i===leftClickItem?'running':'paused'}"
            v-for="(item,i) in dockItems"
+           :key="i"
            @mouseover="onHoverDock(i)" @mouseout="onHoverDock(-1)"
            @click="onLeftClick(i)" @contextmenu="onRightClick(i)">
         <div class="mac-dock-bubble" v-if="i===hoverItem">{{ item.name }}</div>

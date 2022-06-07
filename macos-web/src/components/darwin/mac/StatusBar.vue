@@ -9,6 +9,7 @@
           
         </div>
         <div :class="['mac-status-bar-item',i===clickStatusBarItemIndex?'item-clicked':'']" v-for="(item,i) in barItems"
+        :key="i"
              :ref="'statusIcon'+i"
              @mouseover="clickStatusBarItemIndex!==-2?onHoverBarItem(i):''"
              @click.stop="onClickBarItem(i)">

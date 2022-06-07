@@ -5,14 +5,14 @@
     font-family: 'SF Pro SC';
     font-style: normal;
     font-weight: 300;
-    src: local('☺'), url("./PingFangSC-Light.woff") format("woff");
+    src: local('☺'), url("./fonts/PingFangSC-Light.woff") format("woff");
     /* (C) 2015 Apple Inc. All rights reserved. */
 }
 @font-face {
     font-family: 'SF Pro SC';
     font-style: normal;
     font-weight: 500;
-    src: local('☺'), url("./PingFangSC-Medium.woff2") format("woff2");
+    src: local('☺'), url("./fonts/PingFangSC-Medium.woff2") format("woff2");
     /* (C) 2015 Apple Inc. All rights reserved. */
 }
 
@@ -20,7 +20,7 @@
     font-family: 'SF Pro SC';
     font-style: normal;
     font-weight: 600;
-    src: local('☺'), url("./PingFangSC-Semibold.woff2") format("woff2");
+    src: local('☺'), url("./fonts/PingFangSC-Semibold.woff2") format("woff2");
     /* (C) 2015 Apple Inc. All rights reserved. */
 }
 
@@ -28,7 +28,7 @@
     font-family: 'SF Pro SC';
     font-style: normal;
     font-weight: 400;
-    src: local('☺'), url("./PingFangSC-Regular.woff") format("woff");
+    src: local('☺'), url("./fonts/PingFangSC-Regular.woff") format("woff");
     /* (C) 2015 Apple Inc. All rights reserved. */
 }
 
