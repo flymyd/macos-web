@@ -1,0 +1,9 @@
+{
+  "name": "HelloWorld",
+  "appName": "com.flymyd.HelloWorld",
+  "titleName": "我的世界",
+  "size": {
+    "w": 640,
+    "h": 480
+  }
+}

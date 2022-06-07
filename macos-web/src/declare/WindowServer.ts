@@ -1,6 +1,6 @@
 /**
  * app初始化描述器
- * @param name Dock及默认标题栏的显示名
+ * @param name Dock及状态栏的显示名
  * @param appName app名，应为唯一
  * @param titleName 标题栏显示名 可选
  */
