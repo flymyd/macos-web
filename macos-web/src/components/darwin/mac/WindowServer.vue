@@ -10,7 +10,7 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" name="WindowServer">
 
 import { defineAsyncComponent, markRaw, reactive } from "vue";
 import { appDescriber, appInstance } from "@/declare/WindowServer";

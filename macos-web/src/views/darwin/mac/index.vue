@@ -1,36 +1,48 @@
 <template>
   <div class="mac-container antialiased">
     <status-bar :bar-items="barItems"></status-bar>
-    <DesktopContainer></DesktopContainer>
+    <WindowServer></WindowServer>
     <Dock></Dock>
+    <LaunchPad v-if="showLaunchPad"></LaunchPad>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import StatusBar from "@/components/darwin/mac/StatusBar.vue";
 import Dock from "@/components/darwin/mac/Dock.vue";
-import DesktopContainer from "../../../components/darwin/mac/WindowServer.vue";
-
-export default {
-  name: "index",
-  components: {DesktopContainer, StatusBar, Dock},
-  data: () => ({
-    barItems: [
-      {
-        name: '访达', items: [
-          {type: 0, name: '关于本机', action: '114'},
-          {type: 1}
-        ]
-      },
-      {name: '文件', items: []},
-      {name: '编辑', items: []},
-      {name: '显示', items: []},
-      {name: '前往', items: []},
-      {name: '窗口', items: []},
-      {name: '帮助', items: []},
+import WindowServer from "@/components/darwin/mac/WindowServer.vue";
+import LaunchPad from "@/components/darwin/mac/LaunchPad.vue";
+import { reactive, ref } from "vue";
+import { BarItem } from "@/declare/StatusMenu";
+import { useStore } from "@/store";
+// const showLaunchPad = ref(true);
+const barItems = reactive([
+  {
+    name: '访达', items: [
+      { type: 0, name: '关于本机', action: '114' },
+      { type: 1 }
     ]
-  }),
-}
+  },
+  { name: '文件', items: [] },
+  { name: '编辑', items: [] },
+  { name: '显示', items: [] },
+  { name: '前往', items: [] },
+  { name: '窗口', items: [] },
+  { name: '帮助', items: [] },
+])
+const windowStore = useStore();
+const showLaunchPad = ref(windowStore.$state.showLaunchPad);
+const windowSubscribe = windowStore.$onAction(
+  ({
+    name,
+    store,
+    args,
+  }) => {
+    if(name=='changeShowLaunchPad'){
+      showLaunchPad.value = args[0] as boolean;
+    }
+  }
+)
 </script>
 
 <style scoped lang="scss">
@@ -42,5 +54,6 @@ export default {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 </style>

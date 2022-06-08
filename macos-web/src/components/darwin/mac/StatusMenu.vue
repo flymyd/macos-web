@@ -41,8 +41,8 @@ const appStore = useAppStore();
 const { clickStatusBarItemIndex } = storeToRefs(store)
 const doAction = (item: MenuItem) => {
   console.log(item)
-  const app1 = new AppDescriber('TestApplication1', '测试应用1', '测试标题1')
-  const app2 = new AppDescriber('TestApplication2', '测试应用2', '测试标题2')
+  const app1 = new AppDescriber('com.flymyd.HelloWorld', '测试应用1', '测试标题1')
+  const app2 = new AppDescriber('com.flymyd.vaporwave', '测试应用2', '测试标题2')
   if (item.action == 114) {
     appStore.newApplication(app1);
   } else if (item.action == 514) {

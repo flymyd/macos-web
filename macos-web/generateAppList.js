@@ -16,7 +16,7 @@
         console.log(err)
       } else {
         // console.log(template)
-        console.log(answers.functionName + '生成完毕')
+        console.log('生成完毕')
       }
     })
   })
