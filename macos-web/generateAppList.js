@@ -11,11 +11,10 @@
         resArr.push(JSON.parse(plist))
       }
     })
-    fs.appendFile(distPath, JSON.stringify(resArr), err => {
+    fs.writeFile(distPath, `export const plists = ${JSON.stringify(resArr)}`, err => {
       if (err) {
         console.log(err)
       } else {
-        // console.log(template)
         console.log('生成完毕')
       }
     })

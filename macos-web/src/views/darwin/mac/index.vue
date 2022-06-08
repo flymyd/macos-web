@@ -29,7 +29,7 @@ const barItems = reactive([
   { name: '前往', items: [] },
   { name: '窗口', items: [] },
   { name: '帮助', items: [] },
-])
+]) as any
 const windowStore = useStore();
 const showLaunchPad = ref(windowStore.$state.showLaunchPad);
 const windowSubscribe = windowStore.$onAction(

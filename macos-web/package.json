@@ -10,7 +10,6 @@
     "new-app": "node ./GenerateApp.js"
   },
   "dependencies": {
-    "@iconify/iconify": "^2.2.1",
     "inquirer": "^8.2.4",
     "pinia": "^2.0.14",
     "postcss-px-to-viewport": "^1.1.1",
@@ -21,7 +20,9 @@
     "vue3-draggable-resizable": "^1.6.4"
   },
   "devDependencies": {
-    "@iconify/json": "^2.1.48",
+    "@iconify/iconify": "^2.2.1",
+    "@iconify/json": "^2.1.58",
+    "@iconify/vue": "^3.2.1",
     "@vitejs/plugin-vue": "^2.3.3",
     "autoprefixer": "^10.4.7",
     "postcss": "^8.4.14",

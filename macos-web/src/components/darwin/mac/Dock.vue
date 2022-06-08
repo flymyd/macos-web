@@ -23,7 +23,7 @@ const windowStore = useStore();
 const dockItems = reactive([
   { name: '访达', icon: '/img/finder.png', action: '' },
   {
-    name: '启动台', icon: '/img/appstore.png', action: () => {
+    name: '启动台', icon: '/img/launchpad.png', action: () => {
       windowStore.changeShowLaunchPad(true);
     }, showDot: false
   },
