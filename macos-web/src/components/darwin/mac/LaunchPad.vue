@@ -19,7 +19,7 @@
 <script setup lang="ts" name="LaunchPad">
 import { useStore } from "@/store"
 import { getAppAssetsFile } from "@/utils/getAssets.js";
-import { ref } from "vue";
+import { onMounted, onUnmounted, ref } from "vue";
 import { Icon } from '@iconify/vue';
 import { plists } from "../../../../public/plist.js"
 const windowStore = useStore();
@@ -33,6 +33,17 @@ const searchKey = ref('');
 const isShowApp = (name: string) => {
   return name.toLocaleLowerCase().indexOf(searchKey.value.toLocaleLowerCase()) !== -1;
 }
+onMounted(() => {
+  document.onkeydown = function (event) {
+    const e = event || window.event || arguments.callee.caller.arguments[0];
+    if (e && e.key == "Escape") {
+      useStore().changeShowLaunchPad(false);
+    }
+  };
+})
+onUnmounted(() => {
+  document.onkeydown = null
+})
 </script>
 <style lang="scss" scoped>
 @import "@/assets/css/mac/LaunchPad.scss";

@@ -38,7 +38,7 @@ const windowSubscribe = windowStore.$onAction(
     store,
     args,
   }) => {
-    if(name=='changeShowLaunchPad'){
+    if (name == 'changeShowLaunchPad') {
       showLaunchPad.value = args[0] as boolean;
     }
   }
