@@ -4,8 +4,8 @@
   font-weight: 400;
   width: 100%;
   position: fixed;
+  z-index: 9998;
   .mac-status-bar {
-    z-index: 9998;
     height: 26px;
     padding: 1px 5px;
     box-shadow: 0 1px 1px 1px rgba(113, 113, 115, 0.3);

@@ -1,7 +1,8 @@
 <template>
-  <Vue3DraggableResizable :initW="110" :initH="110" v-model:x="xCoor" v-model:y="yCoor" v-model:w="dragWidth" :parent="true"
-    v-model:h="dragHeight" v-model:active="active" :draggable="true" :resizable="true" @activated="print('activated')"
-    @deactivated="print('deactivated')" @resizing="onResizing">
+  <Vue3DraggableResizable :initW="110" :initH="110" v-model:x="xCoor" v-model:y="yCoor" v-model:w="dragWidth"
+    :parent="true" @drag-end="onDragEnd" v-model:h="dragHeight" v-model:active="active"
+    :draggable="true" :resizable="true" @activated="print('activated')" @deactivated="print('deactivated')"
+    @resizing="onResizing">
     <div class="mac-window-frame" :ref="appInstances.appName + 'Ref'">
       <div class="mac-window-frame-bar">
         <div class="mac-window-frame-btn-group">
@@ -30,7 +31,7 @@
 <script setup lang="ts" name="WindowFrameWork">
 import Vue3DraggableResizable from 'vue3-draggable-resizable'
 import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
-import { computed, getCurrentInstance, nextTick, ref, watchEffect } from "vue";
+import { computed, getCurrentInstance, nextTick, onMounted, ref, VueElement, watchEffect } from "vue";
 
 const vm = getCurrentInstance();
 const props = defineProps({
@@ -39,8 +40,8 @@ const props = defineProps({
     type: Object
   }
 })
-const xCoor = ref((document.documentElement.clientWidth/2)*0.8);
-const yCoor = ref((document.documentElement.clientHeight/2)*0.8);
+const xCoor = ref((document.documentElement.clientWidth / 2) * 0.8);
+const yCoor = ref((document.documentElement.clientHeight / 2) * 0.8);
 const dragWidth = ref(100);
 const dragHeight = ref(100);
 const windowWidth = ref(0);
@@ -78,7 +79,19 @@ const print = (val: any) => {
 const clickBar = (action: number) => {
   console.log(action)
 }
-
+const isOutOfSafeRange = ref(false);
+// const cancelDragging = () => {
+//   const ref = props.appInstances.appName + 'Ref';
+//   const vDom = vm!.refs[ref] as HTMLDivElement;
+//   let event = document.createEvent('MouseEvents')
+//   event.initEvent('mouseup', true, true)
+//   vDom.dispatchEvent(event)
+// }
+const onDragEnd = (e: any) => {
+  if (e.y < 27) {
+    yCoor.value = 27;
+  }
+}
 </script>
 
 <style scoped lang="scss">

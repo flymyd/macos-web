@@ -1,3 +1,7 @@
+.vdr-container {
+    z-index: 50;
+}
+
 .vdr-container.active {
     border: none !important;
 }
