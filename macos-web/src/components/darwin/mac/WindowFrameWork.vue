@@ -1,8 +1,7 @@
 <template>
   <Vue3DraggableResizable :initW="110" :initH="110" v-model:x="xCoor" v-model:y="yCoor" v-model:w="dragWidth"
-    :parent="true" @drag-end="onDragEnd" v-model:h="dragHeight" v-model:active="active"
-    :draggable="true" :resizable="true" @activated="print('activated')" @deactivated="print('deactivated')"
-    @resizing="onResizing">
+    :parent="true" @drag-end="onDragEnd" v-model:h="dragHeight" v-model:active="active" :draggable="true"
+    :resizable="true" @activated="print('activated')" @deactivated="print('deactivated')" @resizing="onResizing">
     <div class="mac-window-frame" :ref="appInstances.appName + 'Ref'">
       <div class="mac-window-frame-bar">
         <div class="mac-window-frame-btn-group">
@@ -32,7 +31,8 @@
 import Vue3DraggableResizable from 'vue3-draggable-resizable'
 import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
 import { computed, getCurrentInstance, nextTick, onMounted, ref, VueElement, watchEffect } from "vue";
-
+import { useAppStore } from '@/store';
+const appStore = useAppStore();
 const vm = getCurrentInstance();
 const props = defineProps({
   appInstances: {
@@ -78,6 +78,7 @@ const print = (val: any) => {
 }
 const clickBar = (action: number) => {
   console.log(action)
+  if (action === 0) appStore.removeApplication(props.appInstances as any);
 }
 const isOutOfSafeRange = ref(false);
 // const cancelDragging = () => {

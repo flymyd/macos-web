@@ -1,12 +1,10 @@
 <template>
   <div class="mac-desktop-container">
-    <keep-alive>
-      <WindowFrameWork v-for="item in appInstances" :app-instances="item" :key="item.name">
+    <WindowFrameWork v-for="item in appInstances" :app-instances="item" :key="item.name">
         <template v-slot:header v-if="item.name">
           <span class="mac-desktop-app-title">{{ item.name }}</span>
         </template>
       </WindowFrameWork>
-    </keep-alive>
   </div>
 </template>
 
@@ -27,13 +25,17 @@ let appInstances = reactive({} as any);  //app实例组
  * @param appDescriber
  */
 const createInstance = (appDescriber: appDescriber) => {
-  appInstances[appDescriber.appName] = {
-    name: appDescriber.name,
-    appName: appDescriber.appName,
-    componentInstance: markRaw(defineAsyncComponent(() =>
-      import(/* @vite-ignore */`../../../apps/${appDescriber.appName}/index.vue`)
-    ))
-  } as appInstance;
+  if (typeof appInstances[appDescriber.appName] == "undefined") {
+    appInstances[appDescriber.appName] = {
+      name: appDescriber.name,
+      appName: appDescriber.appName,
+      componentInstance: markRaw(defineAsyncComponent(() =>
+        import(/* @vite-ignore */`../../../apps/${appDescriber.appName}/index.vue`)
+      ))
+    } as appInstance;
+  } else {
+    //修改activate状态
+  }
 }
 /**
  * 在WindowServer中移除app实例

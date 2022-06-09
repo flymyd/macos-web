@@ -25,9 +25,12 @@ export const useAppStore = defineStore('WindowServer', {
   actions: {
     // 新建一个App实例
     newApplication(appDescriber: appDescriber) {
-      if (Object.keys(this.appDescribers).includes(appDescriber.appName)) return false;
-      this.appDescribers[appDescriber.appName] = appDescriber;
-      useStore().clickStatusBarItemIndex = -2;
+      if (Object.keys(this.appDescribers).includes(appDescriber.appName)) {
+        console.log("app is already opened!")
+      } else {
+        this.appDescribers[appDescriber.appName] = appDescriber;
+        useStore().clickStatusBarItemIndex = -2;
+      }
     },
     // 修改App的状态
     changeApplication(appName: string, props: string, value: any) {

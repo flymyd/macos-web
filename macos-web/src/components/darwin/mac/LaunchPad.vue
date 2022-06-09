@@ -9,7 +9,7 @@
     </div>
     <div class="mac-launchpad-btn-group">
       <template v-for="item in plists" :key="item.appName">
-        <div class="mac-launchpad-btn" @click.stop="clickApp()" v-if="isShowApp(item.name)">
+        <div class="mac-launchpad-btn" @click.stop="clickApp(item)" v-if="isShowApp(item.name)">
           <img :src="getAppAssetsFile(item.appName)" class="mac-launchpad-btn-icon" />
           <span class="mac-launchpad-btn-name">{{ item.name }}</span>
         </div>
@@ -18,18 +18,22 @@
   </div>
 </template>
 <script setup lang="ts" name="LaunchPad">
-import { useStore } from "@/store"
+import { useAppStore, useStore } from "@/store"
 import { getAppAssetsFile } from "@/utils/getAssets.js";
 import { getCurrentInstance, onMounted, onUnmounted, ref } from "vue";
 import { Icon } from '@iconify/vue';
 import { plists } from "../../../../public/plist.js"
+import { appDescriber } from "@/declare/WindowServer.js";
 const windowStore = useStore();
+const appStore = useAppStore();
 const vm = getCurrentInstance();
 const hideLaunchPad = () => {
   useStore().changeShowLaunchPad(false);
 }
-const clickApp = () => { console.log(plists) }
-const getIcon = getAppAssetsFile;
+const clickApp = (item: appDescriber) => {
+  appStore.newApplication(item);
+  hideLaunchPad();
+}
 const isClickSearch = ref(false);
 const searchKey = ref('');
 const isShowApp = (name: string) => {
