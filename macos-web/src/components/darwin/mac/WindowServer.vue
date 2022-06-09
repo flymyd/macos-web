@@ -94,6 +94,9 @@ button {
 .mac-desktop-container {
   background: transparent;
   height: 100%;
+  width: 100vw;
+  padding: 0;
+  margin: 0;
 }
 
 .mac-desktop-app-title {

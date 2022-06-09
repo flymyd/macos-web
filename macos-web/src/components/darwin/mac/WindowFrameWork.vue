@@ -1,5 +1,5 @@
 <template>
-  <Vue3DraggableResizable :initW="110" :initH="110" v-model:x="xCoor" v-model:y="yCoor" v-model:w="dragWidth"
+  <Vue3DraggableResizable :initW="110" :initH="110" v-model:x="xCoor" v-model:y="yCoor" v-model:w="dragWidth" :parent="true"
     v-model:h="dragHeight" v-model:active="active" :draggable="true" :resizable="true" @activated="print('activated')"
     @deactivated="print('deactivated')" @resizing="onResizing">
     <div class="mac-window-frame" :ref="appInstances.appName + 'Ref'">
@@ -39,8 +39,8 @@ const props = defineProps({
     type: Object
   }
 })
-const xCoor = ref(100);
-const yCoor = ref(100);
+const xCoor = ref((document.documentElement.clientWidth/2)*0.8);
+const yCoor = ref((document.documentElement.clientHeight/2)*0.8);
 const dragWidth = ref(100);
 const dragHeight = ref(100);
 const windowWidth = ref(0);

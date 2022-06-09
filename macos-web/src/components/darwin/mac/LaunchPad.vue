@@ -31,7 +31,7 @@ const getIcon = getAppAssetsFile;
 const isClickSearch = ref(false);
 const searchKey = ref('');
 const isShowApp = (name: string) => {
-  return name.indexOf(searchKey.value) !== -1;
+  return name.toLocaleLowerCase().indexOf(searchKey.value.toLocaleLowerCase()) !== -1;
 }
 </script>
 <style lang="scss" scoped>
