@@ -3,7 +3,8 @@
     <div class="mac-launchpad-spotlight">
       <div class="mac-launchpad-spotlight-box" @click.stop="isClickSearch = true">
         <Icon icon="carbon:search" />
-        <input :class="isClickSearch ? 'search-clicked' : ''" placeholder="搜索" v-model="searchKey" />
+        <input :class="isClickSearch ? 'search-clicked' : ''" placeholder="搜索" v-model="searchKey"
+          ref="spotlightInput" />
       </div>
     </div>
     <div class="mac-launchpad-btn-group">
@@ -19,10 +20,11 @@
 <script setup lang="ts" name="LaunchPad">
 import { useStore } from "@/store"
 import { getAppAssetsFile } from "@/utils/getAssets.js";
-import { onMounted, onUnmounted, ref } from "vue";
+import { getCurrentInstance, onMounted, onUnmounted, ref } from "vue";
 import { Icon } from '@iconify/vue';
 import { plists } from "../../../../public/plist.js"
 const windowStore = useStore();
+const vm = getCurrentInstance();
 const hideLaunchPad = () => {
   useStore().changeShowLaunchPad(false);
 }
@@ -38,11 +40,18 @@ onMounted(() => {
     const e = event || window.event || arguments.callee.caller.arguments[0];
     if (e && e.key == "Escape") {
       useStore().changeShowLaunchPad(false);
+    } else if (e) {
+      if (e.key.length === 1) {
+        const vDom = vm!.refs.spotlightInput as HTMLDivElement;
+        if (document.activeElement != vDom) {
+          vDom.focus();
+        }
+      }
     }
   };
 })
 onUnmounted(() => {
-  document.onkeydown = null
+  document.onkeydown = null;
 })
 </script>
 <style lang="scss" scoped>
