@@ -5,7 +5,7 @@
 ::v-deep(.vdr-handle) {
     background: transparent;
     border: none;
-    // border: solid 1px red;
+    width: 4px;
 }
 
 //上半部分缩放点
@@ -22,6 +22,7 @@
 ::v-deep(.handle-tr) {
     width: 4%;
     top: 0;
+    right: 2px;
 }
 
 //下半部分缩放点
@@ -38,6 +39,7 @@
 ::v-deep(.handle-br) {
     width: 4%;
     bottom: 0;
+    right: 2px;
 }
 
 //左右缩放点
@@ -49,6 +51,7 @@
 ::v-deep(.handle-mr) {
     height: 96%;
     top: 3%;
+    right: 2px;
 }
 
 .mac-window-frame {
