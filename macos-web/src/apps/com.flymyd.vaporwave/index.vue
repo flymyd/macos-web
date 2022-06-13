@@ -1,14 +1,16 @@
 <template>
-  <div class="test1">
-    <span style="background-color: blue" @click="test">1145141919</span>
+  <div class="mac-app-container">
+    <div class="test1">
+      <span style="background-color: blue" @click="test">1145141919</span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "TestApplication1",
-  methods:{
-    test(){
+  methods: {
+    test() {
       console.log(114)
     }
   }
@@ -16,6 +18,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "@/assets/css/mac/AppDefault.scss";
+
 .test1 {
   width: 200px;
   height: 200px;

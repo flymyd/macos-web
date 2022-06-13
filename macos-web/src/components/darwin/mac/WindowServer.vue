@@ -95,7 +95,7 @@ button {
 
 .mac-desktop-container {
   background: transparent;
-  height: 100%;
+  height: 100vh;
   width: 100vw;
 }
 

@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @font-face {
     font-family: 'SF Pro SC';
     font-style: normal;
@@ -8,6 +9,7 @@
     src: local('☺'), url("./fonts/PingFangSC-Light.woff") format("woff");
     /* (C) 2015 Apple Inc. All rights reserved. */
 }
+
 @font-face {
     font-family: 'SF Pro SC';
     font-style: normal;
@@ -40,3 +42,6 @@
     font-style: normal;
 }
 
+body {
+    overflow: hidden;
+}
