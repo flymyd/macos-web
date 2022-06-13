@@ -14,6 +14,7 @@
 </template>
 
 <script setup lang="ts" name="Dock">
+import { AppDescriber } from "@/factory/AppStore";
 import { useAppStore, useStore } from "@/store";
 import { getAppAssetsFile } from "@/utils/getAssets";
 import { reactive, ref } from "vue";
@@ -39,6 +40,7 @@ appStore.$subscribe((mutation, state) => {
     const appDes = state.appDescribers[k];
     dockApps.push({
       name: appDes.name,
+      appName: appDes.appName,
       icon: getAppAssetsFile(appDes.appName),
       action: '',
       isOpen: true
@@ -50,15 +52,18 @@ const onHoverDock = (i: number) => {
   hoverItem.value = i;
 }
 const onLeftClick = (i: number) => {
+  const item = dockItems.items[i];
   leftClickItem.value = i;
-  if (dockItems.items[i].hasOwnProperty('showDot')) {
-    if (dockItems.items[i].showDot === false) {
-      dockItems.items[i].isOpen = false;
-    } else dockItems.items[i].isOpen = true;
-  } else dockItems.items[i].isOpen = true;
-  if (dockItems.items[i].hasOwnProperty('action')) {
-    if (typeof dockItems.items[i].action === "function") {
-      dockItems.items[i].action();
+  if (item.hasOwnProperty('showDot')) {
+    if (item.showDot === false) {
+      item.isOpen = false;
+    } else item.isOpen = true;
+  } else item.isOpen = true;
+  if (item.hasOwnProperty('action')) {
+    if (typeof item.action === "function") {
+      item.action();
+    } else {
+      appStore.newApplication(new AppDescriber(item.appName, item.appName))
     }
   }
 }

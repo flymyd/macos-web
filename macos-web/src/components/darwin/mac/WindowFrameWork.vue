@@ -1,7 +1,8 @@
 <template>
   <Vue3DraggableResizable :initW="110" :initH="110" v-model:x="xCoor" v-model:y="yCoor" v-model:w="dragWidth"
     :parent="true" @drag-end="onDragEnd" v-model:h="dragHeight" v-model:active="active" :draggable="true"
-    :resizable="true" @activated="print('activated')" @deactivated="print('deactivated')" @resizing="onResizing">
+    :class="active ? ['mac-window-activated'] : []" :resizable="true" @activated="switchActivated(true)"
+    @deactivated="switchActivated(false)" @resizing="onResizing">
     <div class="mac-window-frame" :ref="appInstances.appName + 'Ref'">
       <div class="mac-window-frame-bar">
         <div class="mac-window-frame-btn-group">
@@ -19,8 +20,7 @@
           <slot name="header"></slot>
         </div>
       </div>
-      <!--TODO 此处事件也应处理vuex中的active-->
-      <div class="mac-window-frame-container" @mousedown.stop="">
+      <div class="mac-window-frame-container" @mousedown.stop="onComponentClick">
         <component :is="appInstances.componentInstance" :style="windowSizeHandle"></component>
       </div>
     </div>
@@ -31,8 +31,10 @@
 import Vue3DraggableResizable from 'vue3-draggable-resizable'
 import 'vue3-draggable-resizable/dist/Vue3DraggableResizable.css'
 import { computed, getCurrentInstance, nextTick, onMounted, ref, VueElement, watchEffect } from "vue";
-import { useAppStore } from '@/store';
+import { useAppStore, useStore } from '@/store';
+import { storeToRefs } from 'pinia';
 const appStore = useAppStore();
+const windowStore = useStore();
 const vm = getCurrentInstance();
 const props = defineProps({
   appInstances: {
@@ -46,7 +48,6 @@ const dragWidth = ref(100);
 const dragHeight = ref(100);
 const windowWidth = ref(0);
 const windowHeight = ref(0);
-const active = ref(true) //TODO 进入vuex
 watchEffect(() => {
   nextTick(() => {
     setTimeout(() => {
@@ -73,14 +74,10 @@ const onResizing = () => {
   windowWidth.value = dragWidth.value;
   windowHeight.value = dragHeight.value;
 }
-const print = (val: any) => {
-  console.log(val)
-}
 const clickBar = (action: number) => {
-  console.log(action)
   if (action === 0) appStore.removeApplication(props.appInstances as any);
 }
-const isOutOfSafeRange = ref(false);
+// const isOutOfSafeRange = ref(false);
 // const cancelDragging = () => {
 //   const ref = props.appInstances.appName + 'Ref';
 //   const vDom = vm!.refs[ref] as HTMLDivElement;
@@ -92,6 +89,25 @@ const onDragEnd = (e: any) => {
   if (e.y < 27) {
     yCoor.value = 27;
   }
+}
+//切换窗口激活状态
+const { activatedApp } = storeToRefs(windowStore);
+const isActive = computed(() => {
+  if (props.appInstances.appName == activatedApp.value) {
+    return true;
+  } else return false;
+})
+const active = ref(true);
+watchEffect(() => {
+  active.value = isActive.value;
+})
+const switchActivated = (e: any) => {
+  if (e) {
+    windowStore.changeActivatedApp(props.appInstances.appName);
+  }
+}
+const onComponentClick = (e: any) => {
+  windowStore.changeActivatedApp(props.appInstances.appName);
 }
 </script>
 
