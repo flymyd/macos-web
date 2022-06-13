@@ -1,4 +1,11 @@
 .mac-app-container {
   min-width: 50vw;
   min-height: 50vh;
+  overflow: auto;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+  display: none;
 }

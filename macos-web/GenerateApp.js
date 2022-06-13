@@ -35,5 +35,18 @@
       const template = JSON.stringify(answers);
       fs.mkdirSync(`${rootPath}${answers.appName}/`)
       fs.appendFileSync(`${rootPath}${answers.appName}/plist.json`, template)
+      const appName = answers.appName.replaceAll(".", "-")
+      const VueTemplate = 
+`<template>
+  <div class="mac-app-container ${appName}}"></div>
+</template>
+<script setup lang="ts" name="com.flymyd.HelloWorld">
+
+</script>
+<style scoped lang="scss">
+@import "@/assets/css/mac/AppDefault.scss";
+.${appName} {}
+</style>`
+      fs.appendFileSync(`${rootPath}${answers.appName}/index.vue`, VueTemplate)
     });
 })()

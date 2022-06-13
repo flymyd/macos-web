@@ -1,6 +1,6 @@
 <template>
-  <div class="mac-app-container com.flymyd.HelloWorld">
-
+  <div class="mac-app-container com-flymyd-HelloWorld">
+    
   </div>
 </template>
 
@@ -10,4 +10,8 @@
 
 <style scoped lang="scss">
 @import "@/assets/css/mac/AppDefault.scss";
+
+.com-flymyd-HelloWorld {
+  
+}
 </style>
