@@ -19,6 +19,6 @@
       "#/*": ["types/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/utils/getAssets.js"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "src/apps/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
