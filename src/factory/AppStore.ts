@@ -1,4 +1,4 @@
-import {appDescriber} from "@/declare/WindowServer";
+import {appDescriber} from "@/types/WindowServer";
 
 export class AppDescriber implements appDescriber {
   appName: string;

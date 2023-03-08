@@ -28,7 +28,7 @@
 <script setup lang="ts">
 import StatusMenu from './StatusMenu.vue'
 import {computed, getCurrentInstance, markRaw, onMounted, PropType, reactive, readonly, ref, watchEffect} from "vue";
-import {AppleMenuItems, BarItem} from "@/declare/StatusMenu";
+import {AppleMenuItems, BarItem} from "@/types/StatusMenu";
 import {useStore} from "@/store";
 import {storeToRefs} from "pinia";
 

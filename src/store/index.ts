@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { appDescriber, appInstance } from "@/declare/WindowServer";
+import { appDescriber, appInstance } from "@/types/WindowServer";
 
 export const useStore = defineStore('darwin-macos', {
   state: () => ({

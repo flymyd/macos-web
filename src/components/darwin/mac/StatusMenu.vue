@@ -18,7 +18,7 @@
 
 
 import { PropType } from "vue";
-import { MenuItem, MenuOffsetStyle } from "@/declare/StatusMenu";
+import { MenuItem, MenuOffsetStyle } from "@/types/StatusMenu";
 import { useAppStore, useStore } from "@/store";
 import { storeToRefs } from "pinia";
 import { AppDescriber } from "@/factory/AppStore";

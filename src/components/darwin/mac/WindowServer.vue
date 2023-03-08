@@ -11,7 +11,7 @@
 <script setup lang="ts" name="WindowServer">
 
 import { defineAsyncComponent, markRaw, reactive } from "vue";
-import { appDescriber, appInstance } from "@/declare/WindowServer";
+import { appDescriber, appInstance } from "@/types/WindowServer";
 import { storeToRefs } from "pinia";
 import { useAppStore, useStore } from "@/store";
 import WindowFrameWork from "@/components/darwin/mac/WindowFrameWork.vue";

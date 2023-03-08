@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts" name="Dock">
-import { DockItem } from "@/declare/Dock";
+import { DockItem } from "@/types/Dock";
 import { AppDescriber } from "@/factory/AppStore";
 import { useAppStore, useStore } from "@/store";
 import { getAppAssetsFile } from "@/utils/getAssets";

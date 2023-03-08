@@ -1,14 +1,13 @@
 module.exports = {
-  content: [
-    './components/**/*.{vue,js}',
-    './layouts/**/*.vue',
-    './pages/**/*.vue',
-    './plugins/**/*.{js,ts}',
-    // './nuxt.config.{js,ts}',
-  ],
-  media: false,
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  class: false,
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['San Francisco', 'sans-serif'],
+        serif: ['San Francisco', 'serif'],
+      },
+    },
   },
   variants: {
     extend: {},

@@ -23,7 +23,7 @@ import { getAppAssetsFile } from "@/utils/getAssets.js";
 import { getCurrentInstance, onMounted, onUnmounted, ref } from "vue";
 import { Icon } from '@iconify/vue';
 import { plists } from "../../../../public/plist.js"
-import { appDescriber } from "@/declare/WindowServer.js";
+import { appDescriber } from "@/types/WindowServer";
 const windowStore = useStore();
 const appStore = useAppStore();
 const vm = getCurrentInstance();

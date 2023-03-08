@@ -136,5 +136,5 @@ const onComponentClick = (e: any) => {
 </script>
 
 <style scoped lang="scss">
-@import "@/assets/css/mac/WindowFrameWork.scss"
+@import "@/assets/css/mac/WindowFrameWork.scss";
 </style>
