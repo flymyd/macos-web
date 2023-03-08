@@ -36,10 +36,7 @@ input {
 
 .mac-launchpad-btn-group {
   @apply flex flex-row flex-wrap;
-  padding-left: calc($btn-box-padding/2)+calc($btn-margin-right/2);
-  padding-right: calc($btn-box-padding/2)-$btn-margin-right;
-  padding-top: 0vh;
-  padding-bottom: 10vh;
+  padding: 0vh calc($btn-box-padding/2)-$btn-margin-right 10vh calc($btn-box-padding/2)+calc($btn-margin-right/2);
   width: 100%;
   height: 100%;
 }
@@ -68,7 +65,7 @@ input {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background-image: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F84%2F82%2Fa3%2F8482a30fbca5c1a58f4cef30abe0348d.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655969175&t=6730bc5aee73f841fa5f3e98dae3bb74");
+  background-image: url("//mydblog.obs.cn-east-3.myhuaweicloud.com/mojave.jpg");
   background-size: 100% 100%;
   animation: blurFadeIn 0.2s ease-in backwards;
 }
@@ -78,7 +75,7 @@ input {
   position: fixed;
   width: 100vw;
   height: 100vh;
-  background-image: url("https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F84%2F82%2Fa3%2F8482a30fbca5c1a58f4cef30abe0348d.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1655969175&t=6730bc5aee73f841fa5f3e98dae3bb74");
+  background-image: url("//mydblog.obs.cn-east-3.myhuaweicloud.com/mojave.jpg");
   background-size: 100% 100%;
   filter: blur(7px);
   z-index: -1;
